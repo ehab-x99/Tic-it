@@ -91,6 +91,10 @@ export type EventCategory =
   | 'alternative' 
   | 'indie' 
   | 'metal'
+  | 'rave'
+  | 'techno'
+  | 'edc'
+  | 'edm'
 
 export type EventStatus = 'upcoming' | 'ongoing' | 'completed' | 'cancelled'
 
