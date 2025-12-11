@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -9,7 +9,11 @@ export const metadata: Metadata = {
   description: 'Book concert tickets with a futuristic cyberpunk experience',
   keywords: ['concert', 'tickets', 'music', 'events', 'booking'],
   authors: [{ name: 'Tic It Team' }],
-  viewport: 'width=device-width, initial-scale=1',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: '#00ffff',
 }
 
