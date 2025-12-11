@@ -71,6 +71,7 @@ function generateMockEvents(count: number): Event[] {
       title: `${artist} Live Concert`,
       artist,
       venue,
+      city,
       date: eventDate,
       price,
       description: `Experience an unforgettable night with ${artist} performing live. This is a once-in-a-lifetime opportunity to see one of the biggest artists in the industry perform their greatest hits and newest tracks.`,

@@ -3,6 +3,7 @@ export interface Event {
   title: string
   artist: string
   venue: string
+  city: string
   date: Date
   price: number
   description: string
@@ -133,4 +134,49 @@ export interface BookingData {
     email: string
     phone?: string
   }
+}
+
+export type TicketTierAccent = 'pink' | 'blue' | 'green' | 'purple' | 'amber'
+
+export interface TicketTier {
+  id: string
+  name: string
+  description: string
+  price: number
+  benefits: string[]
+  availability: {
+    remaining: number
+    total: number
+  }
+  accent?: TicketTierAccent
+}
+
+export interface EventHighlight {
+  id: string
+  title: string
+  description: string
+  icon: string
+}
+
+export interface EventGalleryItem {
+  id: string
+  src: string
+  alt: string
+  type?: 'image' | 'video'
+}
+
+export interface EventDetail extends Event {
+  heroImage: string
+  longDescription: string
+  venueDetails: {
+    address: string
+    city: string
+    state: string
+    capacity: number
+    amenities: string[]
+  }
+  ticketTiers: TicketTier[]
+  gallery: EventGalleryItem[]
+  highlights: EventHighlight[]
+  relatedEventIds: string[]
 }
