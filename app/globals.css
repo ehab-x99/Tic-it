@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+
+    /* Cyberpunk theme variables */
+    --cyber-pink: 330 100% 50%;
+    --cyber-blue: 180 100% 50%;
+    --cyber-green: 120 100% 50%;
+    --cyber-purple: 280 100% 50%;
+    --cyber-orange: 30 100% 50%;
+    --cyber-yellow: 60 100% 50%;
+    --cyber-cyan: 190 100% 50%;
+    --cyber-magenta: 300 100% 50%;
+    
+    --neon-intensity: 0.8;
+    --glow-color: var(--cyber-blue);
+  }
+
+  * {
+    @apply border-gray-700;
+  }
+  
+  body {
+    @apply bg-dark-950 text-gray-100 font-futura;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(191, 0, 255, 0.1) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .cyber-grid-bg {
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .neon-glow {
+    filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor);
+  }
+  
+  .text-neon {
+    color: var(--glow-color);
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  
+  .border-neon {
+    border: 1px solid currentColor;
+    box-shadow: 
+      0 0 5px currentColor,
+      inset 0 0 5px currentColor;
+  }
+  
+  .cyber-button {
+    @apply relative px-6 py-3 bg-transparent border-2 border-cyber-blue text-cyber-blue font-cyber font-semibold uppercase tracking-wider transition-all duration-300;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.3),
+      inset 0 0 10px rgba(0, 255, 255, 0.1);
+  }
+  
+  .cyber-button:hover {
+    @apply bg-cyber-blue text-dark-950;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.6),
+      inset 0 0 20px rgba(0, 255, 255, 0.2);
+  }
+  
+  .cyber-card {
+    @apply bg-dark-900/80 backdrop-blur-sm border border-cyber-blue/30 rounded-lg;
+    box-shadow: 
+      0 4px 20px rgba(0, 255, 255, 0.1),
+      inset 0 1px 0 rgba(0, 255, 255, 0.2);
+  }
+  
+  .cyber-input {
+    @apply bg-dark-800/50 border border-cyber-blue/50 text-gray-100 px-4 py-2 rounded;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cyber-input:focus {
+    @apply border-cyber-blue outline-none;
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba(0, 255, 255, 0.3);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .cyber-gradient {
+    background: linear-gradient(45deg, #ff0080, #00ffff, #bf00ff, #00ff41);
+    background-size: 400% 400%;
+    animation: gradient-shift 3s ease infinite;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cyber-blue/50 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-cyber-blue/70;
+}
+
+/* Loading animation */
+.cyber-loader {
+  border: 2px solid rgba(0, 255, 255, 0.1);
+  border-left: 2px solid #00ffff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
