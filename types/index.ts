@@ -180,3 +180,93 @@ export interface EventDetail extends Event {
   highlights: EventHighlight[]
   relatedEventIds: string[]
 }
+
+// Booking System Types
+export type BookingStep = 'selection' | 'quantity' | 'seating' | 'details' | 'review' | 'payment'
+
+export interface BookingSelection {
+  tierId: string
+  tierName: string
+  price: number
+  accent?: TicketTierAccent
+}
+
+export interface BookingQuantity {
+  selectedTickets: number
+  totalAmount: number
+}
+
+export interface BookingSeating {
+  seatIds: string[]
+  section?: string
+  row?: string
+}
+
+export interface BookingUserInfo {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  marketingConsent: boolean
+}
+
+export interface BookingPayment {
+  method: 'card' | 'paypal' | 'apple-pay' | 'google-pay'
+  cardDetails?: {
+    number: string
+    expiry: string
+    cvv: string
+    name: string
+  }
+}
+
+export interface BookingState {
+  currentStep: BookingStep
+  eventId: string | null
+  eventDetails: EventDetail | null
+  selection: BookingSelection | null
+  quantity: BookingQuantity | null
+  seating: BookingSeating | null
+  userInfo: BookingUserInfo | null
+  payment: BookingPayment | null
+  isLoading: boolean
+  errors: Record<string, string>
+}
+
+export interface BookingContextType extends BookingState {
+  setCurrentStep: (step: BookingStep) => void
+  setEventDetails: (event: EventDetail) => void
+  setSelection: (selection: BookingSelection) => void
+  setQuantity: (quantity: BookingQuantity) => void
+  setSeating: (seating: BookingSeating) => void
+  setUserInfo: (userInfo: BookingUserInfo) => void
+  setPayment: (payment: BookingPayment) => void
+  setLoading: (loading: boolean) => void
+  setError: (field: string, message: string) => void
+  clearError: (field: string) => void
+  clearErrors: () => void
+  resetBooking: () => void
+  goToNextStep: () => void
+  goToPreviousStep: () => void
+  canProceedFromStep: (step: BookingStep) => boolean
+}
+
+export interface Seat {
+  id: string
+  row: string
+  number: string
+  section: string
+  status: 'available' | 'selected' | 'unavailable'
+  price: number
+  x: number
+  y: number
+}
+
+export interface SeatZone {
+  id: string
+  name: string
+  color: string
+  seats: Seat[]
+  minPrice: number
+  maxPrice: number
+}

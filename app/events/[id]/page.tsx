@@ -187,7 +187,7 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
-                  href="#tickets"
+                  href={`/booking/${params.id}?step=selection`}
                   className="px-6 py-3 bg-gradient-to-r from-cyber-pink to-cyber-blue rounded-lg font-cyber text-sm tracking-[0.3em] uppercase shadow-cyber hover:scale-105 transition"
                 >
                   Select Tickets
@@ -406,14 +406,14 @@ const TicketTierCard = ({ tier, index }: { tier: TicketTier; index: number }) =>
           </div>
         </div>
 
-        <button
-          type="button"
-          className="mt-6 group relative overflow-hidden rounded-lg border border-cyber-blue/40 py-3 font-cyber text-xs tracking-[0.4em] uppercase"
+        <Link
+          href={`/booking/${params.id}?step=selection`}
+          className="mt-6 group relative overflow-hidden rounded-lg border border-cyber-blue/40 py-3 font-cyber text-xs tracking-[0.4em] uppercase inline-block"
         >
           <span className="relative z-10">Select Ticket</span>
           <span className="absolute inset-0 bg-gradient-to-r from-cyber-pink to-cyber-blue opacity-0 group-hover:opacity-100 transition" />
           <span className="absolute inset-0 blur-xl bg-cyber-pink/30 opacity-0 group-hover:opacity-80 transition" />
-        </button>
+        </Link>
       </div>
     </div>
   )
